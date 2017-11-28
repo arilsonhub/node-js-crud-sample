@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>  
+</head>
+<body>
+  <h1 style="font-size:24px;">Cadastro de cliente</h1>
+  <div style="color:red;" id="divMessage"><% if(typeof message !== 'undefined' && message !== null){ %><%=message%><% } %></div><br />
+  <form id="formularioCliente" action="/salvar-cliente" method="POST">
+  	  <% if (typeof clienteData !== 'undefined' && clienteData !== null) { %>
+  	  	<input type="hidden" id="id" name="id" />
+  	  <% } %>
+	  <table width="300" border="0">
+	  	  <tr>
+	  	  	<td align="right"><label for"name">Nome:</label></td>
+	  	  	<td>
+		  		<input type="text" name="name" />
+		  	</td>
+		  </tr>
+		  <tr>
+		  	<td align="right"><label for"idade">Idade:</label></td>
+	  	  	<td>
+		  		<input type="text" name="idade" />
+		  	</td>
+		  </tr>
+		  <tr>
+		  	<td align="right"><label for"cpf">CPF:</label></td>
+	  	  	<td>
+		  		<input type="text" name="cpf" />
+		  	</td>
+		  </tr>
+		  <tr>
+		  	<td>&nbsp;</td>
+		  </tr>
+		  <tr>		  	
+	  	  	<td align="right">
+			  	<button type="button" id="btnSalvar" onclick="salvarCliente();">Salvar</button>		  		
+		  	</td>
+		  	<td>
+		  		<button type="button" onclick="document.location.replace('/')">Voltar</button>
+		  	</td>
+		  	
+		  </tr>		  
+	  <table>
+  </form>
+  <script src="/js/main.js"></script>
+  <script>
+  	  <% if (typeof clienteData !== 'undefined' && clienteData !== null) { %>
+	  	  var dadosCliente = {id:"<%=clienteData._id%>",name:"<%=clienteData.name%>",idade:"<%=clienteData.idade%>",cpf:"<%=clienteData.cpf%>"};
+	  	  var formularioCliente = document.getElementById("formularioCliente");  	  
+	  	  formularioCliente.elements.id.value = dadosCliente.id;
+	  	  formularioCliente.elements.name.value = dadosCliente.name;
+	  	  formularioCliente.elements.idade.value = dadosCliente.idade;
+	  	  formularioCliente.elements.cpf.value = dadosCliente.cpf;	  	  	  	  
+  	  <% } %>
+  </script>
+</body>
+</html>

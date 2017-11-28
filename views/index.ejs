@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>  
+</head>
+<body>
+  <h1 style="font-size:24px;">Listagem de clientes</h1>  
+  <a href="/cadastro-cliente">Cadastrar cliente</a><br /><br />
+  <table width="500" border="1" style="border-collapse: collapse;">
+  	  <tr>
+  	  	<td align="center">Nome</td>
+  	  	<td align="center">Idade</td>
+  	  	<td align="center">CPF</td>
+  	  	<td align="center" colspan="2">Ações</td>
+  	  </tr>  	  
+  	  <% clientesList.forEach(function(cliente) { %>
+	  	  <tr>
+	  	  	<td align="center"><%=cliente.name%></td>
+	  	  	<td align="center"><%=cliente.idade%></td>
+	  	  	<td align="center"><%=cliente.cpf%></td>
+	  	  	<td align="center"><a href="/buscar-cliente/<%=cliente._id%>">Editar</a></td>
+	  	  	<td align="center"><a href="javascript:deletarCliente('<%=cliente._id%>')">Remover</a></td>
+	  	  </tr>	  	  
+	   <% }); %>
+  </table>
+  <script src="/js/main.js"></script>
+</body>
+</html>
